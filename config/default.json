@@ -9,8 +9,8 @@
     },
     "local": {},
     "instagram": {
-      "clientID": "your instagram client id",
-      "clientSecret": "your instagram client secret",
+      "clientID": "a7d808bc22e94c329f69c8484333756b",
+      "clientSecret": "7a98273849e9413b8ae41eee45056305",
       "permissions": {
         "scope": ["basic"]
       }
