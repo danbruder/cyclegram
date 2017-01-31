@@ -4,18 +4,19 @@ import {
   Route,
   Link
 } from 'react-router-dom'
-import Login from './Login'
 import api from './api'
+import Signup from './Signup'
+import Login from './Login'
+import Home from './Home'
 
 export default class extends React.Component{
   componentDidMount(){
-    const userService = api.service('users');
-    userService.find().then(u => console.log(u))
   }
   render() {
     return <Router>
       <div className="container">
-        <a href="http://localhost:3030/auth">Login</a>
+        <Route exact path="/" component={Home}/>
+        <Route path="/login" component={Login}/>
         <Route path="/login" component={Login}/>
       </div>
     </Router>

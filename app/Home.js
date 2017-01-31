@@ -1,3 +1,4 @@
+
 import React from 'react'
 import api from './api'
 
@@ -7,7 +8,8 @@ export default class extends React.Component{
   render() {
     return (
       <div className="container">
-       login 
+        
+        home
       </div>
     )
   }
