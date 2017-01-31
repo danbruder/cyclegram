@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "homepage": "",
   "main": "src/",
+  "private": true,
   "keywords": [
     "feathers"
   ],
@@ -16,14 +17,19 @@
     "node": ">= 0.12.0"
   },
   "scripts": {
-    "test": "npm run jshint && npm run mocha",
+    "test": "nwb test-react && npm run jshint && npm run mocha",
     "jshint": "jshint src/. test/. --config",
-    "start": "node src/",
-    "mocha": "mocha test/ --recursive"
+    "start": "concurrently \"node src/\" \"nwb serve-react-app app/index.js\"",
+    "mocha": "mocha test/ --recursive",
+    "build": "nwb build-react-app",
+    "clean": "nwb clean-app",
+    "test:coverage": "nwb test-react --coverage",
+    "test:watch": "nwb test-react --server"
   },
   "dependencies": {
     "body-parser": "^1.16.0",
     "compression": "^1.6.2",
+    "concurrently": "^3.1.0",
     "cors": "^2.8.1",
     "feathers": "^2.0.3",
     "feathers-authentication": "^0.7.11",
@@ -37,12 +43,15 @@
     "passport": "^0.3.2",
     "passport-instagram": "^1.0.0",
     "passport-instagram-token": "^2.3.0",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
     "serve-favicon": "^2.3.2",
     "winston": "^2.3.1"
   },
   "devDependencies": {
     "jshint": "^2.9.4",
     "mocha": "^3.2.0",
-    "request": "^2.79.0"
+    "request": "^2.79.0",
+    "nwb": "0.14.x"
   }
 }
