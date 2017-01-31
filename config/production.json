@@ -1,0 +1,19 @@
+{
+  "host": "cyclegram-app.feathersjs.com",
+  "port": 80,
+  "nedb": "NEDB_BASE_PATH",
+  "public": "../public/",
+  "auth": {
+    "token": {
+      "secret": "FEATHERS_AUTH_SECRET"
+    },
+    "local": {},
+    "instagram": {
+      "clientID": "your instagram client id",
+      "clientSecret": "your instagram client secret",
+      "permissions": {
+        "scope": ["basic"]
+      }
+    }
+  }
+}

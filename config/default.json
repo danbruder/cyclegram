@@ -1,0 +1,19 @@
+{
+  "host": "localhost",
+  "port": 3030,
+  "nedb": "../data/",
+  "public": "../public/",
+  "auth": {
+    "token": {
+      "secret": "tlJ/MWSXSe6uMuNxwAthg8+spXumLvpRBe44fJ363kA7y7oTjfjaEHmOKzu/HwKT8jWxlKt0M/KXEgIYeWrsTQ=="
+    },
+    "local": {},
+    "instagram": {
+      "clientID": "your instagram client id",
+      "clientSecret": "your instagram client secret",
+      "permissions": {
+        "scope": ["basic"]
+      }
+    }
+  }
+}
