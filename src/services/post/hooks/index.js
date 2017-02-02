@@ -20,8 +20,18 @@ exports.before = {
 
 exports.after = {
   all: [],
-  find: [],
-  get: [],
+  find: [
+    hooks.populate('user', {
+      service: 'users',
+      field: '_id'
+    })
+  ],
+  get: [
+    hooks.populate('user', {
+      service: 'users',
+      field: 'user_id'
+    })
+  ],
   create: [],
   update: [],
   patch: [],

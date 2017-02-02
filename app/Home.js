@@ -19,7 +19,7 @@ export default class extends React.Component{
 
   getPage(page){
     const { posts } = this.state
-    const itemsPerPage = 1
+    const itemsPerPage = 25
 
     api.service("posts")
     .find({
@@ -71,6 +71,7 @@ export default class extends React.Component{
     return (
       <div className="container home-cards">
         { posts && posts[0] && posts.map((post, key) => {
+        console.log(post)
           return this.renderCard({ ...post, key})
         })}
         <Button secondary type='submit' onClick={this.handleLoadMore}>Load More</Button>
