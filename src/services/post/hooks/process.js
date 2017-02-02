@@ -10,18 +10,17 @@ module.exports = function(options) {
     // The authenticated user
     const user = hook.params.user;
 
-    // The actual message text
-    //const description = hook.data.description
-    //// Messages can't be longer than 400 characters
-    //.substring(0, 400)
-    //// Do some basic HTML escaping
-    //.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    The actual message text
+    const description = hook.data.description
+    // Messages can't be longer than 400 characters
+    .substring(0, 400)
+    // Do some basic HTML escaping
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 
-    console.log("processing " + hook.data.description)
     // Override the original data
     hook.data = {
       imageSrc: hook.data.imageSrc,
-      description: hook.data.description,
+      description: description,
       userId: user._id,
     };
   };
