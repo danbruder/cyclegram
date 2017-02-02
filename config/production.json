@@ -1,7 +1,7 @@
 {
   "host": "cyclegram-app.feathersjs.com",
   "port": 80,
-  "mongodb": "DATABASE_URL",
+  "mongodb": "mongodb://cyclegram:VcJwhtLi3BaUkUetUxGpP@ds131729.mlab.com:31729/cyclegram",
   "public": "../public/",
   "auth": {
     "token": {

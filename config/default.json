@@ -1,7 +1,7 @@
 {
   "host": "localhost",
   "port": 3030,
-  "mongodb": "mongodb://localhost:27017/cyclegram",
+  "mongodb": "mongodb://cyclegram:VcJwhtLi3BaUkUetUxGpP@ds131729.mlab.com:31729/cyclegram",
   "public": "../public/",
   "auth": {
     "token": {

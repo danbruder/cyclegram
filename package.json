@@ -49,12 +49,12 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "semantic-ui-react": "^0.64.5",
-    "react-router-dom": "^4.0.0-beta.3",
+    "react-router-dom": "^4.0.0-beta.3"
   },
   "devDependencies": {
     "jshint": "^2.9.4",
     "mocha": "^3.2.0",
-    "request": "^2.79.0"
+    "request": "^2.79.0",
     "nwb": "0.14.x"
   }
 }
