@@ -4,7 +4,7 @@ import {
   Route,
   Link
 } from 'react-router-dom'
-import {Container} from 'semantic-ui-react'
+import { Container, Dimmer, Loader } from 'semantic-ui-react'
 import './app.css'
 import api from './api'
 
@@ -16,6 +16,7 @@ import Upload from './Upload'
 
 export default class extends React.Component{
   state = {
+    triedLoggingIn: false,
     isLoggedIn: false,
     user: {}
   }
@@ -23,15 +24,43 @@ export default class extends React.Component{
   componentDidMount(){
     api.authenticate()
     .then(({data}) => {
-      this.setState({
+      setTimeout(() => this.setState({
         isLoggedIn: true,
+        triedLoggingIn: true,
         user: data
-      })
+      }), 2000)
     });
   }
 
   render() {
-    const { isLoggedIn } = this.state
+    const { isLoggedIn, triedLoggingIn } = this.state
+    if(!triedLoggingIn){
+      return (
+        <Router>
+          <div className="container">
+            <Header isLoggedIn={isLoggedIn}/>
+            <Dimmer active inverted>
+              <Loader inverted />
+            </Dimmer>
+          </div>
+        </Router>
+      )
+    }
+
+    if(!isLoggedIn){
+      return (
+        <Router>
+          <div className="container">
+            <Header isLoggedIn={isLoggedIn}/>
+            <Container>
+              <Route path="/" component={Login}/>
+              <Route path="/login" component={Login}/>
+              <Route path="/signup" component={Signup}/>
+            </Container>
+          </div>
+        </Router>
+      )
+    }
 
     return <Router>
       <div className="container">

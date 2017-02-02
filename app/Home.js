@@ -1,27 +1,46 @@
 
 import React from 'react'
 import api from './api'
-import { Container, Card, Icon, Image } from 'semantic-ui-react'
+import { Button, Container, Card, Icon, Image } from 'semantic-ui-react'
 import './home.css'
+import moment from 'moment'
 
 export default class extends React.Component{
   state = {
-    posts: []
+    posts: [],
+    page: 0
   }
 
   componentDidMount(){
-    setTimeout(() => 
+    this.getPage = this.getPage.bind(this)
+    this.handleLoadMore = this.handleLoadMore.bind(this)
+    this.getPage(0)
+  }
+
+  getPage(page){
+    const { posts } = this.state
+    const itemsPerPage = 1
+
     api.service("posts")
     .find({
       query: {
-        "$sort": { createdAt: -1 }
+        "$sort": { createdAt: -1 },
+        "$limit": itemsPerPage,
+        "$skip": itemsPerPage * page
       }
     })
-    .then(page => this.setState({posts: page.data})), 1000)
+    .then(page => {
+      this.setState({
+        posts: posts.concat(page.data)
+      })
+    })
+  }
+
+  handleLoadMore(){
+    this.getPage(this.state.page + 1)
   }
 
   renderCard({ imageSrc, description, key, createdAt }){
-    console.log(createdAt)
     return ( 
       <Card fluid centered key={key}>
         <Card.Content>
@@ -30,7 +49,7 @@ export default class extends React.Component{
         <Image src={imageSrc}/>
         <Card.Content>
           <Card.Meta>
-            <span className='date'> Joined in 2015 </span>
+            <span className='date'> {moment(createdAt).fromNow()} </span>
           </Card.Meta>
           <Card.Description>
             {description}
@@ -38,8 +57,8 @@ export default class extends React.Component{
         </Card.Content>
         <Card.Content extra>
           <a>
-            <Icon name='user' />
-            22 Friends
+            <Icon name='comments' />
+            22 comments
           </a>
         </Card.Content>
       </Card>
@@ -54,6 +73,7 @@ export default class extends React.Component{
         { posts && posts[0] && posts.map((post, key) => {
           return this.renderCard({ ...post, key})
         })}
+        <Button secondary type='submit' onClick={this.handleLoadMore}>Load More</Button>
       </div>
       )
   }
