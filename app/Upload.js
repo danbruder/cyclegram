@@ -20,7 +20,7 @@ export default class extends Component {
 
     postService.create({
       imageSrc: this.state.uploadedFileCloudinaryUrl,
-      text: formData.description
+      description: formData.description
     })
     .then(result => {
       this.props.push("/")

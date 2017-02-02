@@ -10,4 +10,3 @@ export default feathers()
 .configure(hooks())
 .configure(socketio(socket))
 .configure(authentication({ storage: window.localStorage }));
-

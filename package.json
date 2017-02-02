@@ -38,6 +38,7 @@
     "feathers-mongoose": "^3.6.2",
     "feathers-rest": "^1.6.0",
     "feathers-socketio": "^1.4.2",
+    "moment": "^2.17.1",
     "mongoose": "^4.8.1",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",

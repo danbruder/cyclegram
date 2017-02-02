@@ -4,9 +4,9 @@ import {
   Route,
   Link
 } from 'react-router-dom'
-import api from './api'
 import {Container} from 'semantic-ui-react'
 import './app.css'
+import api from './api'
 
 import Header from './Header'
 import Signup from './Signup'
