@@ -50,12 +50,12 @@ export default class extends Component {
           accept="image/*"
           onDrop={this.onImageDrop.bind(this)}>
           <p>Drop an image or click to select a file to upload.</p>
-        </Dropzone>
- :
+        </Dropzone> :
           <div>
             <p>{this.state.uploadedFile.name}</p>
             <img src={this.state.uploadedFileCloudinaryUrl} />
-          </div>}
+          </div>
+          }
         </div>
         <Form onSubmit={this.handleSubmit.bind(this)}>
           <Form.TextArea name='details' label='Details' placeholder='Anything else we should know?' rows='3' />
