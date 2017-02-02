@@ -4,7 +4,6 @@
   "version": "0.0.0",
   "homepage": "",
   "main": "src/",
-  "private": true,
   "keywords": [
     "feathers"
   ],
@@ -17,47 +16,45 @@
     "node": ">= 0.12.0"
   },
   "scripts": {
-    "test": "nwb test-react && npm run jshint && npm run mocha",
+    "test": "npm run jshint && npm run mocha",
     "jshint": "jshint src/. test/. --config",
     "start": "concurrently \"node src/\" \"nwb serve-react-app app/index.js\"",
-    "mocha": "mocha test/ --recursive",
     "build": "nwb build-react-app",
     "clean": "nwb clean-app",
     "test:coverage": "nwb test-react --coverage",
-    "test:watch": "nwb test-react --server"
+    "test:watch": "nwb test-react --server",
+    "mocha": "mocha test/ --recursive"
   },
   "dependencies": {
     "body-parser": "^1.16.0",
     "compression": "^1.6.2",
-    "concurrently": "^3.1.0",
     "cors": "^2.8.1",
     "feathers": "^2.0.3",
     "feathers-authentication": "^0.7.11",
-    "feathers-client": "^1.9.0",
     "feathers-configuration": "^0.3.3",
     "feathers-errors": "^2.5.0",
     "feathers-hooks": "^1.7.1",
-    "feathers-mongoose": "^4.0.0",
-    "feathers-nedb": "^2.6.0",
+    "feathers-mongoose": "^3.6.2",
     "feathers-rest": "^1.6.0",
     "feathers-socketio": "^1.4.2",
     "mongoose": "^4.8.1",
-    "nedb": "^1.8.0",
     "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
+    "passport-facebook-token": "^3.3.0",
     "passport-instagram": "^1.0.0",
     "passport-instagram-token": "^2.3.0",
+    "serve-favicon": "^2.3.2",
+    "winston": "^2.3.1",
+    "concurrently": "^3.1.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-router-dom": "^4.0.0-beta.3",
-    "semantic-ui-css": "^2.2.4",
     "semantic-ui-react": "^0.64.5",
-    "serve-favicon": "^2.3.2",
-    "winston": "^2.3.1"
+    "react-router-dom": "^4.0.0-beta.3",
   },
   "devDependencies": {
     "jshint": "^2.9.4",
     "mocha": "^3.2.0",
-    "request": "^2.79.0",
+    "request": "^2.79.0"
     "nwb": "0.14.x"
   }
 }
