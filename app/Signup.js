@@ -5,6 +5,14 @@ import { Button, Checkbox, Form } from 'semantic-ui-react'
 export default class extends React.Component{
   handleSubmit(e, { formData}){
     e.preventDefault()
+    api.service("users")
+    .create({
+      email: formData.email,
+      password: formData.password
+    })
+    .then(() => {
+      console.log("created!")
+    })
   }
   render() {
     return (

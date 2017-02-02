@@ -28,6 +28,7 @@
   "dependencies": {
     "body-parser": "^1.16.0",
     "compression": "^1.6.2",
+    "concurrently": "^3.1.0",
     "cors": "^2.8.1",
     "feathers": "^2.0.3",
     "feathers-authentication": "^0.7.11",
@@ -43,13 +44,14 @@
     "passport-facebook-token": "^3.3.0",
     "passport-instagram": "^1.0.0",
     "passport-instagram-token": "^2.3.0",
-    "serve-favicon": "^2.3.2",
-    "winston": "^2.3.1",
-    "concurrently": "^3.1.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-dropzone": "^3.9.2",
+    "react-router-dom": "^4.0.0-beta.3",
     "semantic-ui-react": "^0.64.5",
-    "react-router-dom": "^4.0.0-beta.3"
+    "serve-favicon": "^2.3.2",
+    "superagent": "^3.4.1",
+    "winston": "^2.3.1"
   },
   "devDependencies": {
     "jshint": "^2.9.4",

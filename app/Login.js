@@ -6,7 +6,16 @@ export default class extends React.Component{
   handleSubmit(e, { formData }){
     e.preventDefault()
     console.log(formData)
+    api.authenticate({
+      type: 'local',
+      email: formData.email,
+      password: formData.password
+    })
+    .then(() => {
+      console.log('logged in!')
+    })
   }
+
   render() {
     return (
       <div className="container">

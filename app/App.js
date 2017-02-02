@@ -6,26 +6,43 @@ import {
 } from 'react-router-dom'
 import api from './api'
 import {Container} from 'semantic-ui-react'
+import './app.css'
 
 import Header from './Header'
 import Signup from './Signup'
 import Login from './Login'
 import Home from './Home'
+import Upload from './Upload'
 
 export default class extends React.Component{
-  componentDidMount(){
+  state = {
+    isLoggedIn: false,
+    user: {}
   }
+
+  componentDidMount(){
+    api.authenticate()
+    .then(({data}) => {
+      this.setState({
+        isLoggedIn: true,
+        user: data
+      })
+    });
+  }
+
   render() {
+    const { isLoggedIn } = this.state
+
     return <Router>
       <div className="container">
-        <Header/>
+        <Header isLoggedIn={isLoggedIn}/>
         <Container>
           <Route exact path="/" component={Home}/>
           <Route path="/login" component={Login}/>
           <Route path="/signup" component={Signup}/>
+          <Route path="/upload" component={Upload}/>
         </Container>
       </div>
     </Router>
   }
-
 }
