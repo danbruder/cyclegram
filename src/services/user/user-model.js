@@ -15,6 +15,9 @@ const userSchema = new Schema({
   instagram: { type: Schema.Types.Mixed },
   email: {type: String, required: true, unique: true},
   password: { type: String, required: true },
+  firstName: { type: String },
+  lastName: { type: String },
+  avatarUrl: { type: String },
   
   createdAt: { type: Date, 'default': Date.now },
   updatedAt: { type: Date, 'default': Date.now }

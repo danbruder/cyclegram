@@ -24,12 +24,18 @@ export default class extends React.Component{
   componentDidMount(){
     api.authenticate()
     .then(({data}) => {
-      setTimeout(() => this.setState({
+      this.setState({
         isLoggedIn: true,
         triedLoggingIn: true,
         user: data
-      }), 2000)
-    });
+      })
+    })
+    .catch(() => {
+      this.setState({
+        isLoggedIn: false,
+        triedLoggingIn: true
+      })
+    })
   }
 
   render() {
@@ -53,7 +59,7 @@ export default class extends React.Component{
           <div className="container">
             <Header isLoggedIn={isLoggedIn}/>
             <Container>
-              <Route path="/" component={Login}/>
+              <Route exact path="/" component={Login}/>
               <Route path="/login" component={Login}/>
               <Route path="/signup" component={Signup}/>
             </Container>

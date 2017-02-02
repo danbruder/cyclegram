@@ -4,6 +4,7 @@ import Dropzone from 'react-dropzone';
 import request from 'superagent';
 import { Container,  Button, Checkbox, Form  } from 'semantic-ui-react'
 import api from './api'
+import './upload.css'
 
 const CLOUDINARY_UPLOAD_PRESET = 'ko9eaxls';
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/dylrswykj/upload';
@@ -52,7 +53,7 @@ export default class extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container uploads">
         <div>
           {this.state.uploadedFileCloudinaryUrl === '' ? 
         <Dropzone

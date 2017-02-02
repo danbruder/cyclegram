@@ -40,11 +40,11 @@ export default class extends React.Component{
     this.getPage(this.state.page + 1)
   }
 
-  renderCard({ imageSrc, description, key, createdAt }){
+  renderCard({ imageSrc, description, key, createdAt, user }){
     return ( 
       <Card fluid centered key={key}>
         <Card.Content>
-          <Card.Header> Matthew </Card.Header>
+          <Card.Header> {user.email} </Card.Header>
         </Card.Content>
         <Image src={imageSrc}/>
         <Card.Content>

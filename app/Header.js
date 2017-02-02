@@ -5,6 +5,15 @@ import api from './api'
 import './header.css'
 
 export default class MenuExampleSecondaryPointing extends Component {
+  constructor(props){
+    super(props)
+    this.handleLogout = this.handleLogout.bind(this)
+  }
+
+  handleLogout(){
+    api.logout()
+  }
+
   render() {
     const { isLoggedIn } = this.props
 
@@ -16,7 +25,7 @@ export default class MenuExampleSecondaryPointing extends Component {
           </Menu.Item>
           <Menu.Menu position='right'>
             { isLoggedIn &&  <Menu.Item name='upload'><Link to="/upload">Upload</Link></Menu.Item>}
-            { isLoggedIn &&  <Menu.Item name='logout'><Link to="/logout">Logout</Link></Menu.Item>}
+            { isLoggedIn &&  <Menu.Item onClick={this.handleLogout} name='logout'>Logout</Menu.Item>}
             { !isLoggedIn &&  <Menu.Item name='login'><Link to="/login">Login</Link></Menu.Item>}
             { !isLoggedIn &&  <Menu.Item name='login'><Link to="/signup">Signup</Link></Menu.Item>}
           </Menu.Menu>
