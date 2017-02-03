@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link, Redirect } from 'react-router-dom'
-import { Menu, Segment } from 'semantic-ui-react'
+import { Icon, Menu, Segment } from 'semantic-ui-react'
 import api from './api'
 import './header.css'
 
@@ -17,10 +17,12 @@ export default class MenuExampleSecondaryPointing extends Component {
     const { isLoggedIn } = this.props
 
     return (
-      <div>
-        <Menu fixed="top" pointing secondary>
+      <div className="main-menu">
+        <Menu secondary>
           <Menu.Item name='home'>
-            <Link to="/">CycleGram</Link>
+            <h2>
+              <Link to="/"><Icon name="motorcycle"/><span className="title">CycleGram</span></Link>
+            </h2>
           </Menu.Item>
           <Menu.Menu position='right'>
             { isLoggedIn &&  <Menu.Item name='upload'><Link to="/upload">Upload</Link></Menu.Item>}

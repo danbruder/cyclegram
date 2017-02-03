@@ -1,3 +1,9 @@
-.ui.top.menu{
-  background: white;
+.main-menu{
+  padding: 20px 0px 40px 0px;
+  max-width: 960px;
+  margin: 0px auto;
+}
+
+.main-menu .title{
+  padding-left: 10px;
 }

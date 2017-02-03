@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
-import { Container,  Button, Checkbox, Form  } from 'semantic-ui-react'
+import { Image, Card, Grid, Container,  Button, Checkbox, Form  } from 'semantic-ui-react'
 import api from './api'
 import './upload.css'
 
@@ -53,26 +53,34 @@ export default class extends Component {
 
   render() {
     return (
-      <div className="container uploads">
-        <div>
-          {this.state.uploadedFileCloudinaryUrl === '' ? 
-        <Dropzone
-          multiple={false}
-          accept="image/*"
-          onDrop={this.onImageDrop.bind(this)}>
-          <p>Drop an image or click to select a file to upload.</p>
-        </Dropzone> :
-          <div>
-            <p>{this.state.uploadedFile.name}</p>
-            <img src={this.state.uploadedFileCloudinaryUrl} />
-          </div>
-          }
+      <Container text>
+        <div className="container uploads">
+              <Card>
+                <Card.Content>
+                  <Card.Description>
+                  </Card.Description>
+                    {this.state.uploadedFileCloudinaryUrl === '' ? 
+                    <Dropzone
+                      multiple={false}
+                      accept="image/*"
+                      onDrop={this.onImageDrop.bind(this)}
+                      className="drop"
+                    >
+                      Drop image here or click to browse
+                    </Dropzone> :
+                    <div>
+                      <p>{this.state.uploadedFile.name}</p>
+                      <Image src={this.state.uploadedFileCloudinaryUrl} />
+                    </div>
+                }
+                </Card.Content>
+              </Card>
+              <Form onSubmit={this.handleSubmit.bind(this)}>
+                <Form.TextArea name='description' label='Details' placeholder='Anything else we should know?' rows='3' />
+                <Button primary type='submit'>Submit</Button>
+              </Form>
         </div>
-        <Form onSubmit={this.handleSubmit.bind(this)}>
-          <Form.TextArea name='description' label='Details' placeholder='Anything else we should know?' rows='3' />
-          <Button primary type='submit'>Submit</Button>
-        </Form>
-      </div>
-    )
-  }
-}
+      </Container>
+      )
+      }
+      }

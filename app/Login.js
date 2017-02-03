@@ -1,7 +1,7 @@
 import React from 'react'
 import api from './api'
 import { Redirect } from 'react-router-dom'
-import { Button, Checkbox, Form } from 'semantic-ui-react'
+import { Container, Button, Checkbox, Form } from 'semantic-ui-react'
 
 export default class extends React.Component{
   state = {
@@ -27,7 +27,7 @@ export default class extends React.Component{
     }
 
     return (
-      <div className="container">
+      <Container text>
         <Form onSubmit={this.handleSubmit.bind(this)}>
           <Form.Field>
             <label>Email</label>
@@ -39,7 +39,7 @@ export default class extends React.Component{
           </Form.Field>
           <Button type='submit'>Submit</Button>
         </Form>
-      </div>
+      </Container>
     )
   }
 
