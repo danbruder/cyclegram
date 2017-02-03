@@ -27,19 +27,17 @@ export default class extends React.Component{
     }
 
     return (
-      <Container text>
-        <Form onSubmit={this.handleSubmit.bind(this)}>
-          <Form.Field>
-            <label>Email</label>
-            <input name="email" placeholder='First Name' />
-          </Form.Field>
-          <Form.Field>
-            <label>Pass</label>
-            <input name="password" placeholder='Last Name' />
-          </Form.Field>
-          <Button type='submit'>Submit</Button>
-        </Form>
-      </Container>
+      <Form onSubmit={this.handleSubmit.bind(this)}>
+        <Form.Field>
+          <label>Email</label>
+          <input name="email" placeholder='Email' />
+        </Form.Field>
+        <Form.Field>
+          <label>Password</label>
+          <input type='password' name="password" placeholder='Password' />
+        </Form.Field>
+        <Button primary type='submit'>Login</Button>
+      </Form>
     )
   }
 

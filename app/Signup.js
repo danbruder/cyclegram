@@ -21,7 +21,6 @@ export default class extends React.Component{
       password: formData.password,
       firstName: formData.first_name,
       lastName: formData.last_name,
-      avatarSrc: this.state.uploadedFileCloudinaryUrl,
     })
     .then(() => (
       this.props.handleLogIn(formData.email, formData.password)
@@ -29,62 +28,27 @@ export default class extends React.Component{
     ))
   }
 
-  onImageDrop(files){
-    const file = files[0]
-    this.setState({
-      uploadedFile: file
-    })
-    let upload = request.post(CLOUDINARY_UPLOAD_URL)
-    .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
-    .field('file', file);
-
-    upload.end((err, response) => {
-      if (err) {
-        console.error(err);
-      }
-
-      if (response.body.secure_url !== '') {
-        this.setState({
-          uploadedFileCloudinaryUrl: response.body.secure_url
-        });
-      }
-    });
-  }
   render() {
     return (
       <div className="container">
         <Form onSubmit={this.handleSubmit.bind(this)}>
           <Form.Field>
             <label>First name</label>
-            <input name="first_name" placeholder='first name' />
+            <input name="first_name" placeholder='First name' />
           </Form.Field>
           <Form.Field>
             <label>Last name</label>
-            <input name="last_name" placeholder='last name' />
+            <input name="last_name" placeholder='Last name' />
           </Form.Field>
           <Form.Field>
             <label>Email</label>
             <input name="email" placeholder='Email' />
           </Form.Field>
           <Form.Field>
-            <label>Pass</label>
-            <input name="password" placeholder='Password' />
+            <label>Password</label>
+            <input type="password" name="password" placeholder='Password' />
           </Form.Field>
-        <div>
-          {this.state.uploadedFileCloudinaryUrl === '' ? 
-        <Dropzone
-          multiple={false}
-          accept="image/*"
-          onDrop={this.onImageDrop.bind(this)}>
-          <p>Drop an image or click to select a file to upload.</p>
-        </Dropzone> :
-          <div>
-            <p>{this.state.uploadedFile.name}</p>
-            <img src={this.state.uploadedFileCloudinaryUrl} />
-          </div>
-          }
-        </div>
-          <Button type='submit'>Signup</Button>
+          <Button primary type='submit'>Signup</Button>
         </Form>
       </div>
     )

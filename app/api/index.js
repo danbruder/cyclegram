@@ -4,7 +4,7 @@ import socketio from 'feathers-socketio/client';
 import io from 'socket.io-client';
 import authentication from 'feathers-authentication/client';
 
-const socket = io('https://cyclegram-157620.appspot.com');
+const socket = io('localhost:3030');
 
 export default feathers()
 .configure(hooks())
