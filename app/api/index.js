@@ -4,7 +4,7 @@ import socketio from 'feathers-socketio/client';
 import io from 'socket.io-client';
 import authentication from 'feathers-authentication/client';
 
-const socket = io('https://incredible-sing.gomix.me');
+const socket = io('https://cyclegram-157620.appspot.com');
 
 export default feathers()
 .configure(hooks())
