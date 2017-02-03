@@ -4,7 +4,7 @@ import socketio from 'feathers-socketio/client';
 import io from 'socket.io-client';
 import authentication from 'feathers-authentication/client';
 
-const socket = io('http://localhost:3030');
+const socket = io('https://gem-eagle.gomix.me');
 
 export default feathers()
 .configure(hooks())
