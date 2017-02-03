@@ -10,7 +10,6 @@ module.exports = function(options) {
     // The authenticated user
     const user = hook.params.user;
 
-    The actual message text
     const description = hook.data.description
     // Messages can't be longer than 400 characters
     .substring(0, 400)

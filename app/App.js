@@ -12,11 +12,12 @@ import Header from './Header'
 import Signup from './Signup'
 import Login from './Login'
 import Home from './Home'
+import Feed from './Feed'
 import Upload from './Upload'
+import PrivateRoute from './PrivateRoute'
 
 export default class extends React.Component{
   state = {
-    triedLoggingIn: false,
     isLoggedIn: false,
     user: {}
   }
@@ -26,58 +27,60 @@ export default class extends React.Component{
     .then(({data}) => {
       this.setState({
         isLoggedIn: true,
-        triedLoggingIn: true,
         user: data
       })
     })
     .catch(() => {
       this.setState({
         isLoggedIn: false,
-        triedLoggingIn: true
+      })
+    })
+  }
+
+  handleLogOut(){
+    api.logout()
+    .then(() => {
+      this.setState({
+        isLoggedIn: false,
+        user: {}
+      })
+    })
+  }
+
+  handleLogIn(email, password){
+    return api.authenticate({
+      type: 'local',
+      email: email,
+      password: password
+    })
+    .then(({data}) => {
+      this.setState({
+        isLoggedIn: true,
+        user: data
       })
     })
   }
 
   render() {
-    const { isLoggedIn, triedLoggingIn } = this.state
-    if(!triedLoggingIn){
-      return (
-        <Router>
-          <div className="container">
-            <Header isLoggedIn={isLoggedIn}/>
-            <Dimmer active inverted>
-              <Loader inverted />
-            </Dimmer>
-          </div>
-        </Router>
-      )
-    }
+    const { isLoggedIn, user } = this.state
 
-    if(!isLoggedIn){
-      return (
-        <Router>
-          <div className="container">
-            <Header isLoggedIn={isLoggedIn}/>
-            <Container>
-              <Route exact path="/" component={Login}/>
-              <Route path="/login" component={Login}/>
-              <Route path="/signup" component={Signup}/>
-            </Container>
-          </div>
-        </Router>
-      )
-    }
-
-    return <Router>
-      <div className="container">
-        <Header isLoggedIn={isLoggedIn}/>
-        <Container>
-          <Route exact path="/" component={Home}/>
-          <Route path="/login" component={Login}/>
-          <Route path="/signup" component={Signup}/>
-          <Route path="/upload" component={Upload}/>
-        </Container>
-      </div>
-    </Router>
+    return (
+      <Router>
+        <div className="container">
+          <Header 
+            isLoggedIn={isLoggedIn}
+            handleLogOut={this.handleLogOut.bind(this)}
+          />
+          <Container>
+            { !isLoggedIn ? 
+            <Route exact path="/" component={Home}/> : 
+            <PrivateRoute isLoggedIn={isLoggedIn} exact path="/" component={Feed}/> }
+            <PrivateRoute isLoggedIn={isLoggedIn} path="/upload" component={Upload}/>
+            <Route path="/login" component={Login} handleLogIn={this.handleLogIn.bind(this)}/>
+            <Route path="/signup" component={Signup} handleLogIn={this.handleLogIn.bind(this)}/>
+          </Container>
+        </div>
+      </Router>
+    )
   }
 }

@@ -15,7 +15,6 @@ export default class extends React.Component{
   handleSubmit(e, { formData}){
     e.preventDefault()
 
-
     api.service("users")
     .create({
       email: formData.email,
@@ -24,9 +23,10 @@ export default class extends React.Component{
       lastName: formData.last_name,
       avatarSrc: this.state.uploadedFileCloudinaryUrl,
     })
-    .then(() => {
-      console.log("created!")
-    })
+    .then(() => (
+      this.props.handleLogIn(formData.email, formData.password)
+      .then(() => this.props.push("/"))
+    ))
   }
 
   onImageDrop(files){

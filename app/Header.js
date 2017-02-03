@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import { Menu, Segment } from 'semantic-ui-react'
 import api from './api'
 import './header.css'
@@ -7,11 +7,10 @@ import './header.css'
 export default class MenuExampleSecondaryPointing extends Component {
   constructor(props){
     super(props)
-    this.handleLogout = this.handleLogout.bind(this)
   }
 
-  handleLogout(){
-    api.logout()
+  _handleLogOut(){
+    this.props.handleLogOut()
   }
 
   render() {
@@ -25,7 +24,7 @@ export default class MenuExampleSecondaryPointing extends Component {
           </Menu.Item>
           <Menu.Menu position='right'>
             { isLoggedIn &&  <Menu.Item name='upload'><Link to="/upload">Upload</Link></Menu.Item>}
-            { isLoggedIn &&  <Menu.Item onClick={this.handleLogout} name='logout'>Logout</Menu.Item>}
+            { isLoggedIn &&  <Menu.Item  name='logout'><a href="javascript:void(0)" onClick={this._handleLogOut.bind(this)}>Logout</a></Menu.Item>}
             { !isLoggedIn &&  <Menu.Item name='login'><Link to="/login">Login</Link></Menu.Item>}
             { !isLoggedIn &&  <Menu.Item name='login'><Link to="/signup">Signup</Link></Menu.Item>}
           </Menu.Menu>

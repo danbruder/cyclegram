@@ -1,22 +1,31 @@
 import React from 'react'
 import api from './api'
+import { Redirect } from 'react-router-dom'
 import { Button, Checkbox, Form } from 'semantic-ui-react'
 
 export default class extends React.Component{
+  state = {
+    isLoggedIn: false
+  }
+
   handleSubmit(e, { formData }){
     e.preventDefault()
-    console.log(formData)
-    api.authenticate({
-      type: 'local',
-      email: formData.email,
-      password: formData.password
-    })
-    .then(() => {
-      console.log('logged in!')
-    })
+    this.props.handleLogIn(
+      formData.email,
+      formData.password
+    ).then(() => this.props.push("/"))
   }
 
   render() {
+    const { isLoggedIn } = this.state
+
+    if(isLoggedIn){
+      return <Redirect to={{
+        pathname: '/',
+        state: { from: this.props.location }
+      }}/>
+    }
+
     return (
       <div className="container">
         <Form onSubmit={this.handleSubmit.bind(this)}>
