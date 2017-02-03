@@ -1,5 +1,5 @@
 {
-  "host": "https://perpetual-phone.gomix.me",
+  "host": "https://incredible-sing.gomix.me",
   "port": 3000,
   "mongodb": "mongodb://cyclegram:VcJwhtLi3BaUkUetUxGpP@ds131729.mlab.com:31729/cyclegram",
   "public": "../public/",
