@@ -18,7 +18,8 @@
   "scripts": {
     "test": "npm run jshint && npm run mocha",
     "jshint": "jshint src/. test/. --config",
-    "start": "concurrently \"node src/\" \"nwb serve-react-app app/index.js\"",
+    "dev": "concurrently \"node src/\" \"nwb serve-react-app app/index.js\"",
+    "start": "node src",
     "build": "nwb build-react-app",
     "clean": "nwb clean-app",
     "test:coverage": "nwb test-react --coverage",
