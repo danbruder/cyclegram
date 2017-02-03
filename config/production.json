@@ -1,11 +1,11 @@
 {
-  "host": "cyclegram-app.feathersjs.com",
+  "host": "https://cyclegram-157603.appspot.com/",
   "port": 80,
   "mongodb": "mongodb://cyclegram:VcJwhtLi3BaUkUetUxGpP@ds131729.mlab.com:31729/cyclegram",
   "public": "../public/",
   "auth": {
     "token": {
-      "secret": "FEATHERS_AUTH_SECRET"
+      "secret": "ffdsfdsZMMx1F4iHPBcLj2TV5cALdzyx7PRxxkPhwXAgvyfXUJI+HvBDsgEhiXVMeHDKXa2zdbiBmBt0SC8ZAEpKD64g=="
     },
     "local": {},
     "facebook": {
