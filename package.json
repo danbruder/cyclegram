@@ -19,7 +19,7 @@
     "test": "npm run jshint && npm run mocha",
     "jshint": "jshint src/. test/. --config",
     "dev": "concurrently \"node src/\" \"nwb serve-react-app app/index.js\"",
-    "start": "node src",
+    "start": "NODE_ENV=production node ./src",
     "build": "nwb build-react-app",
     "clean": "nwb clean-app",
     "test:coverage": "nwb test-react --coverage",
