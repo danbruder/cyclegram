@@ -4,7 +4,7 @@ import socketio from 'feathers-socketio/client';
 import io from 'socket.io-client';
 import authentication from 'feathers-authentication/client';
 
-const socket = io('https://secure-anchorage-46467.herokuapp.com');
+const socket = io();
 
 export default feathers()
 .configure(hooks())
