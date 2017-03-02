@@ -21,7 +21,10 @@ export default class MenuExampleSecondaryPointing extends Component {
         <Menu secondary>
           <Menu.Item name='home'>
             <h2>
-              <Link to="/"><Icon name="motorcycle"/><span className="title">CycleGram</span></Link>
+              <Link to="/">
+                <img className="logo" src="/apple-icon-76x76.png"/>
+                <div className="title">CycleGram</div>
+              </Link>
             </h2>
           </Menu.Item>
           <Menu.Menu position='right'>
