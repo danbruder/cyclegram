@@ -20,8 +20,8 @@
     "jshint": "jshint src/. test/. --config",
     "dev": "concurrently \"node src/\" \"nwb serve-react-app app/index.js\"",
     "start": "NODE_ENV=production node ./src",
-    "build": "nwb build-react-app app && mv dist/* public/",
-    "clean": "nwb clean-app",
+    "build": "npm run clean && nwb build-react-app app && mv dist/* public/",
+    "clean": "nwb clean-app && rm public/*.js && rm public/*.css && rm public/*.map",
     "test:coverage": "nwb test-react --coverage",
     "test:watch": "nwb test-react --server",
     "mocha": "mocha test/ --recursive"
