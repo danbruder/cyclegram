@@ -23,7 +23,7 @@ export default class MenuExampleSecondaryPointing extends Component {
             <h2>
               <Link to="/">
                 <img className="logo" src="/apple-icon-76x76.png"/>
-                <div className="title">CycleGram</div>
+                <div className="title">Custom Bobber Club</div>
               </Link>
             </h2>
           </Menu.Item>
